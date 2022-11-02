@@ -30,15 +30,34 @@ function colour(){
             let g = Math.floor(Math.random()*255);
             let b = Math.floor(Math.random()*255);
             if(!squares[i].style.backgroundColor){
+                let brightness = 100
                 randomColour = `rgb(${r},${g},${b})`;
-                squares[i].style.backgroundColor = randomColour
+                squares[i].style.backgroundColor = randomColour;
+                squares[i].style.filter = `brightness(${brightness}%)`
+            }
+            else{
+                let currentBrightness = squares[i].style.filter;
+                let num = currentBrightness.slice(11, 14)
+                if (num==="100"){
+                    num-=10
+                }
+
+                else{
+                    num = currentBrightness.slice(11, 13)
+                    num = Number(num)
+                    num -= 10
+            }
+
+
+                console.log(num)
+                squares[i].style.filter = `brightness(${num}%)`;
             }
         })
-    }
+    }}
 
     
 
-    }
+    
 
 btn.addEventListener("click", changeSize)
 
