@@ -24,11 +24,22 @@ function makeGrid(size = 16){
 
 function colour(){
     const squares = document.querySelectorAll(".square");
-    const arraySquares = Array.from(squares);
-    arraySquares.forEach((square) => {
-        square.addEventListener("mouseenter", () => square.classList.add("colour"))
-    })
-}
+    for (let i=0; i < squares.length; i++){
+        squares[i].addEventListener("mouseenter", () => {
+            let r = Math.floor(Math.random()*255);
+            let g = Math.floor(Math.random()*255);
+            let b = Math.floor(Math.random()*255);
+            if(!squares[i].style.backgroundColor){
+                randomColour = `rgb(${r},${g},${b})`;
+                squares[i].style.backgroundColor = randomColour
+            }
+        })
+    }
+
+    
+
+    }
+
 btn.addEventListener("click", changeSize)
 
 function changeSize(){
